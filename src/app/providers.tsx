@@ -16,7 +16,7 @@ export function Providers({ children }: PropsWithChildren) {
         <LanguageLayout>
           <ThemeLayout>{children}</ThemeLayout>
         </LanguageLayout>
-        <ReactQueryDevtools initialIsOpen={false} />
+        {/* <ReactQueryDevtools initialIsOpen={false} /> */}
       </QueryClientProvider>
     </LazyMotion>
   );

@@ -4,14 +4,26 @@ const nextConfig = {
     return [
       {
         source: '/auth/google',
-        destination: 'http://localhost:4200/auth/google',
+        destination: 'https://quick-online.ru/api/auth/google',
       },
       {
         source: '/auth/github',
-        destination: 'http://localhost:4200/auth/github',
+        destination: 'https://quick-online.ru/api/auth/github',
       },
     ];
   },
+  // rewrites: () => {
+  //   return [
+  //     {
+  //       source: '/auth/google',
+  //       destination: 'http://localhost:4200/auth/google',
+  //     },
+  //     {
+  //       source: '/auth/github',
+  //       destination: 'http://localhost:4200/auth/github',
+  //     },
+  //   ];
+  // },
   images: {
     remotePatterns: [
       {
