@@ -1,0 +1,40 @@
+.section {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 80px 10%;
+  gap: 20px;
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .group {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+
+    .block {
+      width: 450px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background-color: rgb(var(--secondary-color-hover));
+      border-radius: 10px;
+      padding: 20px;
+
+      .top {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        font-size: 1.6rem;
+      }
+
+      .info {
+        color: rgba(var(--text-color), 0.7);
+        font-size: 1.4rem;
+      }
+    }
+  }
+}

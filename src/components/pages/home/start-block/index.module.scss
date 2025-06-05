@@ -1,0 +1,28 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  padding: 80px 10%;
+  align-items: center;
+  gap: 40px;
+
+  h2 {
+    font-size: 2rem;
+
+    span {
+      color: rgb(var(--primary-color));
+    }
+  }
+
+  .btn {
+    padding: 10px 20px;
+    background-color: rgb(var(--primary-color));
+    border-radius: 10px;
+    width: fit-content;
+    color: rgb(var(--text-color-dark));
+    transition: background-color ease-out 0.2s;
+
+    &:hover {
+      background-color: rgb(var(--primary-color-hover));
+    }
+  }
+}

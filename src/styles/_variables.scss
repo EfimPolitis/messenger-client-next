@@ -1,0 +1,77 @@
+:root {
+  // Цветовая схема: purple
+  --primary-color-purple: 99, 102, 241;
+  --primary-color-hover-purple: 119, 122, 237;
+  --primary-color-active-purple: 85, 89, 243;
+
+  // Цветовая схема: green
+  --primary-color-green: 35, 134, 54;
+  --primary-color-hover-green: 120, 240, 168;
+  --primary-color-active-green: 60, 232, 129;
+
+  // Цветовая схема: orange
+  --primary-color-orange: 241, 165, 99;
+  --primary-color-hover-orange: 245, 184, 130;
+  --primary-color-active-orange: 248, 163, 89;
+
+  // Цветовая схема: red
+  --primary-color-red: 187, 42, 42;
+  --primary-color-hover-red: 241, 124, 124;
+  --primary-color-active-red: 250, 86, 86;
+
+  // light mode
+  --secondary-color-light: 252, 252, 252;
+  --secondary-color-hover-light: 235, 235, 235;
+  --secondary-color-active-light: 90, 90, 90;
+  --text-color-light: 31, 31, 31;
+
+  // dark mode
+  --secondary-color-dark: 21, 27, 35;
+  --secondary-color-hover-dark: 13, 17, 23;
+  --secondary-color-active-dark: 103, 103, 103;
+  --text-color-dark: 215, 215, 215;
+}
+
+// Color scheme: purple
+[data-color='purple'] {
+  --primary-color: var(--primary-color-purple);
+  --primary-color-hover: var(--primary-color-hover-purple);
+  --primary-color-active: var(--primary-color-active-purple);
+}
+
+// Color scheme: green
+[data-color='green'] {
+  --primary-color: var(--primary-color-green);
+  --primary-color-hover: var(--primary-color-hover-green);
+  --primary-color-active: var(--primary-color-active-green);
+}
+
+// Color scheme: orange
+[data-color='orange'] {
+  --primary-color: var(--primary-color-orange);
+  --primary-color-hover: var(--primary-color-hover-orange);
+  --primary-color-active: var(--primary-color-active-orange);
+}
+
+// Color scheme: red
+[data-color='red'] {
+  --primary-color: var(--primary-color-red);
+  --primary-color-hover: var(--primary-color-hover-red);
+  --primary-color-active: var(--primary-color-active-red);
+}
+
+// light theme
+[data-theme='light'] {
+  --secondary-color: var(--secondary-color-light);
+  --secondary-color-hover: var(--secondary-color-hover-light);
+  --secondary-color-active: var(--secondary-color-active-light);
+  --text-color: var(--text-color-light);
+}
+
+// dark theme
+[data-theme='dark'] {
+  --secondary-color: var(--secondary-color-dark);
+  --secondary-color-hover: var(--secondary-color-hover-dark);
+  --secondary-color-active: var(--secondary-color-active-dark);
+  --text-color: var(--text-color-dark);
+}

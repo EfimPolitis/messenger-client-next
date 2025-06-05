@@ -1,0 +1,31 @@
+.section {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 80px 10%;
+  gap: 40px;
+  background-color: rgb(var(--secondary-color-hover));
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .cards {
+    display: flex;
+    justify-content: space-between;
+
+    .card {
+      width: 320px;
+      height: 320px;
+      padding-top: 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+      text-align: center;
+      background-color: rgb(var(--secondary-color));
+      border-radius: 15px;
+      box-shadow: 5px -5px 0px 2px rgb(var(--primary-color));
+    }
+  }
+}
