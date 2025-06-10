@@ -14,14 +14,18 @@ export const LanguageSwitcher = () => {
     setMounted(true);
   }, []);
 
-  if (!mounted) return null;
-
   return (
-    <InputSelect
-      initialValue={language === 'ru' ? 'Русский' : 'English'}
-      data={translations[language]}
-      style={{ width: '250px' }}
-      setState={lang => setLanguage(lang as Languages)}
-    />
+    <>
+      {mounted ? (
+        <InputSelect
+          initialValue={language === 'ru' ? 'Русский' : 'English'}
+          data={translations[language]}
+          style={{ width: '250px' }}
+          setState={lang => setLanguage(lang as Languages)}
+        />
+      ) : (
+        <InputSelect style={{ width: '250px' }} />
+      )}
+    </>
   );
 };

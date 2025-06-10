@@ -1,25 +1,26 @@
-'use client'
+'use client';
 
-import { Undo2 } from 'lucide-react'
-import { useRouter } from 'next/navigation'
-import type { CSSProperties } from 'react'
+import { Undo2 } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import type { CSSProperties } from 'react';
 
-import styles from './index.module.scss'
+import styles from './index.module.scss';
 
 interface IUndoBtn {
-  style?: CSSProperties
-  size?: number
+  style?: CSSProperties;
+  size?: number;
+  link?: string;
 }
 
-export const UndoBtn = ({ style, size }: IUndoBtn) => {
-  const { back } = useRouter()
+export const UndoBtn = ({ style, size, link }: IUndoBtn) => {
+  const { back, push } = useRouter();
   return (
     <button
-      onClick={() => back()}
+      onClick={() => (link ? push(link) : back())}
       className={styles.undo_btn}
       style={style}
     >
       <Undo2 size={size} />
     </button>
-  )
-}
+  );
+};

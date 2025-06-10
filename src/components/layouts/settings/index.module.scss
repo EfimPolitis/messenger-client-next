@@ -1,0 +1,68 @@
+.settings_layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+
+  .submenu {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+
+    .profile {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+
+      .avatar {
+        height: 60px;
+        width: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgb(var(--secondary-color));
+        border-radius: 100%;
+      }
+    }
+
+    .navigation {
+      margin-top: 30px;
+
+      ul {
+        display: flex;
+        gap: 10px;
+        flex-direction: column;
+      }
+
+      .link {
+        height: 46px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 1.2rem;
+        border-radius: 5px;
+        padding-left: 25px;
+        transition: all ease-out 0.2s;
+        position: relative;
+
+        &:hover {
+          background-color: rgb(var(--secondary-color));
+        }
+      }
+
+      .active {
+        background-color: rgb(var(--secondary-color));
+
+        &::after {
+          content: '';
+          width: 4px;
+          height: 32px;
+          position: absolute;
+          top: 7px;
+          left: 10px;
+          background-color: rgb(var(--primary-color));
+          border-radius: 10px;
+        }
+      }
+    }
+  }
+}

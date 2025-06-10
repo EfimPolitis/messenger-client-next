@@ -1,7 +1,7 @@
 import { type TProtectUserData, UserRole } from '@/services/auth/auth.types';
 
 export type TUserDataState = {
-  id: number;
+  id: string;
   rights: UserRole;
   isLoggedIn: boolean;
   isAdmin: boolean;

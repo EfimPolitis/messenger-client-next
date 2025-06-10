@@ -1,11 +1,11 @@
-'use client'
+'use client';
 
-import cn from 'clsx'
-import { Eye, EyeOff } from 'lucide-react'
-import { type HTMLInputTypeAttribute, forwardRef, useState } from 'react'
+import cn from 'clsx';
+import { Eye, EyeOff } from 'lucide-react';
+import { type HTMLInputTypeAttribute, forwardRef, useState } from 'react';
 
-import styles from './index.module.scss'
-import type { TypeInputProps } from './index.types'
+import styles from './index.module.scss';
+import type { TypeInputProps } from './index.types';
 
 export const Field = forwardRef<HTMLInputElement, TypeInputProps>(
   (
@@ -22,7 +22,7 @@ export const Field = forwardRef<HTMLInputElement, TypeInputProps>(
   ) => {
     const [type, setType] = useState<HTMLInputTypeAttribute | undefined>(
       initialType || 'text'
-    )
+    );
 
     return (
       <div className={cn(styles.field, className)}>
@@ -31,12 +31,7 @@ export const Field = forwardRef<HTMLInputElement, TypeInputProps>(
             <Icon />
           </div>
         )}
-        <input
-          ref={ref}
-          type={type}
-          style={style}
-          {...rest}
-        />
+        <input ref={ref} type={type} style={style} {...rest} />
         {isPassword && (
           <div
             className={styles.eyeIcon}
@@ -50,8 +45,8 @@ export const Field = forwardRef<HTMLInputElement, TypeInputProps>(
           </div>
         )}
       </div>
-    )
+    );
   }
-)
+);
 
-Field.displayName = 'field'
+Field.displayName = 'field';

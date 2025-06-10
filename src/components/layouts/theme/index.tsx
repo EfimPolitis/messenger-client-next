@@ -1,32 +1,42 @@
-'use client'
+'use client';
 
-import React, { useEffect, useState } from 'react'
-import { Toaster } from 'react-hot-toast'
+import React, { useEffect, useState } from 'react';
+import { Toaster } from 'react-hot-toast';
 
-import { ThemeToggler } from '@/components/ui/buttons/theme-toggle'
+import { ThemeToggler } from '@/components/ui/buttons/theme-toggle';
 
 import {
-  StorageKey,
+  type Colors,
+  StorageKeyColor,
+  StorageKeyTheme,
   ThemeContext,
   type Themes,
+  getColor,
   getTheme,
-  supportedThemes
-} from './theme.helper'
+  supportedColors,
+  supportedThemes,
+} from './theme.helper';
 
 export const ThemeLayout = (props: { children: React.ReactNode }) => {
-  const [theme, setTheme] = useState<Themes>(getTheme)
+  const [theme, setTheme] = useState<Themes>(getTheme);
+  const [color, setColor] = useState<Colors>(getColor);
 
   useEffect(() => {
-    localStorage.setItem(StorageKey, theme)
-    document.documentElement.setAttribute('data-theme', theme)
-  }, [theme])
+    localStorage.setItem(StorageKeyTheme, theme);
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem(StorageKeyColor, color);
+    document.documentElement.setAttribute('data-color', color);
+  }, [theme, color]);
 
   return (
     <ThemeContext.Provider
       value={{
+        color,
+        setColor,
+        supportedColors,
         theme,
         setTheme,
-        supportedThemes
+        supportedThemes,
       }}
     >
       {props.children}
@@ -35,13 +45,13 @@ export const ThemeLayout = (props: { children: React.ReactNode }) => {
           style: {
             backgroundColor: theme === 'dark' ? '#303030' : '#ffffff',
             color: theme === 'dark' ? '#d7d7d7' : '000',
-            textAlign: 'center'
+            textAlign: 'center',
           },
-          duration: 5000
+          duration: 5000,
         }}
       />
     </ThemeContext.Provider>
-  )
-}
+  );
+};
 
-ThemeLayout.ThemeToggler = ThemeToggler
+ThemeLayout.ThemeToggler = ThemeToggler;

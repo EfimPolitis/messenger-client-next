@@ -1,0 +1,77 @@
+.appearance {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px 80px;
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .line {
+    border-color: rgb(var(--text-color));
+  }
+
+  .theme {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .color {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .rectangles {
+      display: flex;
+      gap: 15px;
+
+      .rectangle {
+        height: 50px;
+        width: 50px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .purple {
+          width: 32px;
+          height: 32px;
+          border-radius: 5px;
+          background-color: rgb(var(--primary-color-purple));
+          cursor: pointer;
+        }
+
+        .red {
+          width: 32px;
+          height: 32px;
+          border-radius: 5px;
+          background-color: rgb(var(--primary-color-red));
+          cursor: pointer;
+        }
+
+        .orange {
+          width: 32px;
+          height: 32px;
+          border-radius: 5px;
+          background-color: rgb(var(--primary-color-orange));
+          cursor: pointer;
+        }
+
+        .green {
+          width: 32px;
+          height: 32px;
+          border-radius: 5px;
+          background-color: rgb(var(--primary-color-green));
+          cursor: pointer;
+        }
+      }
+
+      .active {
+        border: 2px dashed rgb(var(--text-color));
+        border-spacing: 10px;
+      }
+    }
+  }
+}

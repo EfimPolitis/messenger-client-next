@@ -4,7 +4,7 @@ import {
   getLanguage,
   LanguageContext,
   type Languages,
-  StorageKey,
+  StorageKeyLanguage,
   supportedLanguages,
 } from './language.helper';
 import { LanguageSwitcher } from '@/components/ui';
@@ -13,7 +13,7 @@ export const LanguageLayout = (props: { children: React.ReactNode }) => {
   const [language, setLanguage] = useState<Languages>(getLanguage);
 
   useEffect(() => {
-    localStorage.setItem(StorageKey, language);
+    localStorage.setItem(StorageKeyLanguage, language);
     document.documentElement.setAttribute('lang', language);
   }, [language]);
 

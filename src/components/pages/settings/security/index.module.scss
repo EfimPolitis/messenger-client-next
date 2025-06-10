@@ -1,0 +1,39 @@
+.security {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px 80px;
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .line {
+    border-color: rgb(var(--text-color));
+  }
+
+  .change_password {
+    .form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      .bottom {
+        display: flex;
+        gap: 50px;
+      }
+
+      .field_block {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .change_password_btn {
+        width: 240px;
+        height: 50px;
+        background-color: rgb(var(--primary-color));
+      }
+    }
+  }
+}

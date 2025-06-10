@@ -10,83 +10,139 @@ import { SocialMediaButtons } from './SocialMediaButtons';
 import { useAuthForm } from './useAuthForm';
 import { Field } from '@/components/ui/fields';
 import { AtSignIcon, Lock, User } from 'lucide-react';
+import { Button } from '@/components/ui/buttons/button';
+import Link from 'next/link';
+import { PUBLIC_PAGES } from '@/config/pages/public.config';
+import { Loader } from '@/components/ui';
+import { UndoBtn } from '@/components/ui/buttons/undo';
+import { useTheme } from '@/hooks/useTheme';
 
 interface AuthFormProps {
   isLogin: boolean;
 }
 
 export function AuthForm({ isLogin }: AuthFormProps) {
-  const { handleSubmit, isLoading, onSubmit, recaptchaRef, register } =
+  const { theme } = useTheme();
+  const { handleSubmit, isLoading, onSubmit, onError, recaptchaRef, register } =
     useAuthForm(isLogin);
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className='max-w-sm mx-auto'>
-      <h2 className='font-semibold mb-4'>{isLogin ? 'Вход' : 'Регистрация'}</h2>
-      <p>Заполните поля чтобы продолжить</p>
-      <div className={styles.fields}>
-        {!isLogin && <Field placeholder='Имя' Icon={User} />}
-        {!isLogin && <Field placeholder='Фамилия' Icon={User} />}
-        <Field placeholder='Эллектронная почта' Icon={AtSignIcon} />
-        <Field placeholder='Пароль' Icon={Lock} />
-        {!isLogin && <Field placeholder='Подтверждение пароля' Icon={Lock} />}
-      </div>
-      {/* <div className='mb-4'>
-        <label className='text-gray-600'>
-          Email
-          <input
-            type='email'
-            placeholder='Enter email: '
-            {...register('email', { required: true })}
-            className={clsx(
-              styles['input-field'],
-              'w-full p-2 border rounded focus:outline-none focus:border-indigo-500'
-            )}
-          />
-        </label>
-      </div>
-
-      <div className='mb-4'>
-        <label className='text-gray-600'>
-          Пароль
-          <input
-            type='password'
-            placeholder='Enter password: '
-            {...register('password', { required: true })}
-            className={clsx(
-              styles['input-field'],
-              'w-full p-2 border rounded focus:outline-none focus:border-indigo-500'
-            )}
-          />
-        </label>
-      </div>
-
-       */}
-
-      <ReCAPTCHA
-        ref={recaptchaRef}
-        size='normal'
-        sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY as string}
-        theme='light'
-        className={styles.recaptcha}
-      />
-
-      {/* <div className='mb-3'>
-        <button
-          type='submit'
-          className={clsx(
-            styles['btn-primary'],
-            isLogin ? 'bg-indigo-500' : 'bg-green-500',
-            isLoading ? 'opacity-75 cursor-not-allowed' : ''
-          )}
-          disabled={isLoading}
+    <div className={styles.auth_block}>
+      <h2 className='font-semibold text-4xl'>
+        {isLogin ? 'Вход' : 'Регистрация'}
+      </h2>
+      <div className={styles.form_block}>
+        <UndoBtn size={32} link={PUBLIC_PAGES.HOME} />
+        <form
+          onSubmit={handleSubmit(onSubmit, onError)}
+          className={styles.auth_form}
         >
-          {isLoading ? 'Загрузка...' : isLogin ? 'Войти' : 'Зарегистрироваться'}
-        </button>
-      </div> */}
+          <p className='text-lg w-full text-center'>
+            Заполните поля чтобы продолжить
+          </p>
+          <div className={styles.fields}>
+            {!isLogin && (
+              <Field
+                placeholder='Имя'
+                Icon={User}
+                style={{ height: '60px' }}
+                {...register('name', {
+                  required: {
+                    value: true,
+                    message: 'Имя - обязательное поле',
+                  },
+                })}
+              />
+            )}
 
-      <SocialMediaButtons />
+            {!isLogin && (
+              <Field
+                placeholder='Фамилия'
+                Icon={User}
+                {...register('surname', {
+                  required: {
+                    value: true,
+                    message: 'Фамилия - обязательное поле',
+                  },
+                })}
+              />
+            )}
 
-      <AuthToggle isLogin={isLogin} />
-    </form>
+            <Field
+              placeholder='Эллектронная почта'
+              Icon={AtSignIcon}
+              type='email'
+              {...register('email', {
+                required: {
+                  value: true,
+                  message: 'Эллектронная почта - обязательное поле',
+                },
+              })}
+            />
+
+            <Field
+              placeholder='Пароль'
+              Icon={Lock}
+              type='password'
+              isPassword
+              {...register('password', {
+                required: {
+                  value: true,
+                  message: 'Пароль - обязательное поле',
+                },
+              })}
+            />
+
+            {!isLogin && (
+              <Field
+                placeholder='Подтверждение пароля'
+                Icon={Lock}
+                type='password'
+                isPassword
+                {...register('confirmPassword', {
+                  required: {
+                    value: true,
+                    message: 'Подтверждение пароля - обязательное поле',
+                  },
+                })}
+              />
+            )}
+          </div>
+
+          <ReCAPTCHA
+            ref={recaptchaRef}
+            size='normal'
+            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY as string}
+            theme={theme}
+            className={styles.recaptcha}
+          />
+
+          <Button
+            type='submit'
+            disabled={isLoading}
+            className={clsx(
+              styles['btn-primary'],
+              isLogin ? 'bg-indigo-500' : 'bg-green-500',
+              isLoading ? 'opacity-75 cursor-not-allowed' : ''
+            )}
+          >
+            {isLoading ? <Loader /> : isLogin ? 'Войти' : 'Зарегистрироваться'}
+          </Button>
+
+          <Link
+            href={PUBLIC_PAGES.RESET_PASSWORD}
+            className={styles.reset_password_link}
+          >
+            Забыли пароль?
+          </Link>
+
+          <p className='w-full text-center'>Или</p>
+
+          <SocialMediaButtons />
+
+          <AuthToggle isLogin={isLogin} />
+        </form>
+      </div>
+    </div>
   );
 }

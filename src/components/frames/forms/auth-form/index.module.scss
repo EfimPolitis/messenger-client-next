@@ -1,27 +1,39 @@
-.fields {
+.auth_block {
   display: flex;
+  align-items: center;
   flex-direction: column;
-  gap: 10px;
-  margin-bottom: 10px;
-}
+  gap: 20px;
 
-.input-field {
-  @apply w-full p-2 border border-neutral-700 rounded focus:outline-none focus:border-indigo-500 bg-transparent text-white transition-colors mt-1;
-}
+  .form_block {
+    display: flex;
+    gap: 20px;
+    justify-content: start;
+    margin-right: 70px;
 
-.btn-primary {
-  @apply w-full py-2 text-white font-semibold rounded transition duration-300 ease-in-out mt-1;
+    .auth_form {
+      background-color: rgb(var(--secondary-color));
+      padding: 20px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
 
-  &:hover {
-    @apply transform scale-105;
+      .fields {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin-bottom: 10px;
+      }
+
+      .reset_password_link {
+        color: rgb(var(--primary-color));
+      }
+    }
   }
 }
 
 .recaptcha {
-  @apply mb-3;
-  filter: invert(1) grayscale(1);
-  transform: scaleX(1.25);
-  border-radius: 10px;
+  transform: scaleX(1.22);
 
   > div > div {
     @apply mx-auto;

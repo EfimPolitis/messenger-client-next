@@ -7,7 +7,7 @@ export const supportedLanguages = {
 
 export type Languages = keyof typeof supportedLanguages;
 
-export const StorageKey = 'lang';
+export const StorageKeyLanguage = 'lang';
 
 export const getLanguage = (): Languages => {
   const browserLang = navigator.language;
@@ -17,10 +17,10 @@ export const getLanguage = (): Languages => {
     return lang; // Возвращаем язык по умолчанию на сервере
   }
 
-  let language = localStorage.getItem(StorageKey);
+  let language = localStorage.getItem(StorageKeyLanguage);
 
   if (!language) {
-    localStorage.setItem(StorageKey, lang);
+    localStorage.setItem(StorageKeyLanguage, lang);
     language = lang;
   }
 

@@ -30,20 +30,20 @@ export const Header = () => {
           <path
             d='M22.5 15L13.5 15'
             stroke='white'
-            stroke-width='3'
-            stroke-linecap='round'
+            strokeWidth='3'
+            strokeLinecap='round'
           />
           <path
             d='M19.5 25H8.5'
             stroke='white'
-            stroke-width='3'
-            stroke-linecap='round'
+            strokeWidth='3'
+            strokeLinecap='round'
           />
           <path
             d='M22.5 35H13.5'
             stroke='white'
-            stroke-width='3'
-            stroke-linecap='round'
+            strokeWidth='3'
+            strokeLinecap='round'
           />
           <path
             className={styles.text}

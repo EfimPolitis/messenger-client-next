@@ -1,24 +1,18 @@
-import { instance } from '@/api/axios'
-import { IUser } from '@/types/types'
+import { instance } from '@/api/axios';
+import { IUser } from '@/types/types';
 
 class UserService {
-	private _BASE_URL = '/users'
+  private _BASE_URL = '/users';
 
-	async fetchProfile() {
-		return instance.get<IUser>(`${this._BASE_URL}/profile`)
-	}
+  async fetchProfile() {
+    return instance.get<IUser>(`${this._BASE_URL}/profile`);
+  }
 
-	async fetchPremium() {
-		return instance.get<{ text: string }>(`${this._BASE_URL}/premium`)
-	}
+  async searchUsers(userData: string) {
+    if (!userData.length) return;
 
-	async fetchManagerContent() {
-		return instance.get<{ text: string }>(`${this._BASE_URL}/manager`)
-	}
-
-	async fetchList() {
-		return instance.get<IUser[]>(`${this._BASE_URL}/list`)
-	}
+    return instance.get<IUser[]>(`${this._BASE_URL}/search/${userData}`);
+  }
 }
 
-export default new UserService()
+export default new UserService();
